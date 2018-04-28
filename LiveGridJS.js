@@ -10,7 +10,7 @@ function test(X){
 }
 
 
-function GetCSV(){
+function Getfueltype(){
 
 j=JSON.stringify
 		
@@ -35,34 +35,45 @@ j=JSON.stringify
 			n++
 		}
 		
-		//$(SomeData1).append(data[1][1]);
-		//$(SomeData2).append(arr2[0]);
 		drawChart2(data);
 
     }
 });
 }
 
-function drawChart(){
-	alert(x[1][1])
-	var data = google.visualization.arrayToDataTable([
-        ['Label', 'Value'],
-        [x[1][1], parseFloat(x[1][2])],
-        [x[2][1], parseFloat(x[2][2])],
-        [x[3][1], parseFloat(x[3][2])],
-		[x[4][1], parseFloat(x[4][2])],
-		[x[5][1], parseFloat(x[5][2])],
-		[x[6][1], parseFloat(x[6][2])],
-		[x[7][1], parseFloat(x[7][2])]
-        ]);
+function GetDemand(){
 
-	var options = {
-	width:1000,
-	height:240
-};
-	var chart = new google.visualization.Gauge(document.getElementById('SomeData1'));
-	chart.draw(data, options)
-};
+j=JSON.stringify
+		
+
+	$.ajax({
+    url: 'https://api.bmreports.com/BMRS/ROLSYSDEM/v1?APIKey=66ky5jo5p5w0vbd&ServiceType=CSV',
+    async: false,
+    success: function (csvd) {
+        data = $.csv.toArrays(csvd);
+    },
+    dataType: "text",
+    complete: function () {
+		
+        //alert(data[1][2]);		
+		while (n < (data.length)-2) {
+			fueltype = j( data[n].slice(1,2));
+			GigaWatt = j(parseFloat(data[n].slice(2,3)));
+			//arr.push(fueltype);
+			arr.push(fueltype);
+			arr2.push(GigaWatt);
+			
+			n++
+		}
+		
+		drawChart2(data);
+
+    }
+});
+}
+
+
+
 
 function drawChart2(data){
 	var opts = {
