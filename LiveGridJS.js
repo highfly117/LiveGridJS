@@ -67,11 +67,11 @@ function drawChart(){
 function drawChart2(data){
 	var opts = {
   angle: 0.1, // The span of the gauge arc
-  lineWidth: 0.3, // The line thickness
+  lineWidth: 0.2, // The line thickness
   radiusScale: 1, // Relative radius
   pointer: {
-    length: 0.6, // // Relative to gauge radius
-    strokeWidth: 0.035, // The thickness
+    length: 0.5,  // Relative to gauge radius
+    strokeWidth: 0.02, // The thickness
     color: '#000000' // Fill color
   },
   limitMax: false,     // If false, max value increases automatically if value > maxValue
@@ -83,23 +83,35 @@ function drawChart2(data){
   highDpiSupport: true,     // High resolution support
   percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]],
   staticLabels: {
-  font: "10px sans-serif",  // Specifies font
-  labels: [35*0.25,35*0.50,35*0.75,35*1.00,],  // Print labels at these values
-  color: "#000000",  // Optional: Label text color
-  fractionDigits: 0  // Optional: Numerical precision. 0=round off.
-},
+	font: "12px sans-serif",  // Specifies font
+	labels: [35*0.10, 35*0.20, 35*0.30,35*0.40,35*0.50,35*0.60, 35*0.70,35*0.80, 35*0.90, 35*1.00],  // Print labels at these values
+	color: "#000000",  // Optional: Label text color
+	fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+   },
+   renderTicks: {
+          divisions: 4,
+          divWidth: 1.1,
+          divLength: 1.5,
+          divColor: "#333333",
+          subDivisions: 3,
+          subLength: 0.5,
+          subWidth: 0.6,
+          subColor: "#666666"
+        }
 };
 
 i = 1;
 
-while (i < 5){
-	var target = document.getElementById('SomeData'+ i); // your canvas element
+while (i < 15){
+	var target = document.getElementById('SomeData' + i); // your canvas element
 	var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	gauge.maxValue = 35; // set max gauge value
 	gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	gauge.set(parseFloat(data[i][2])/1000); // set actual value
+	$('#gValue'+ i).html(data[i][1] +"   "+ parseFloat(data[i][2])/1000 + " GW")
 i++
 };
+
 }
 	

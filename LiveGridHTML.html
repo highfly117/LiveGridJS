@@ -1,33 +1,95 @@
+<!DOCTYPE html>
+
 <header>
 
-<script type ="text/javascript" src="C:\Users\user\Documents\LiveGridJS\LiveGridJS.js"></script>
+<script type ="text/javascript" src="LiveGridJS.js"></script>
 <script type ="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type ="text/javascript" src="C:\Users\user\Documents\LiveGridJS\jquery-csv.js"></script>
+<script type ="text/javascript" src="jquery-csv.js"></script>
 <script type ="text/javascript" src="gauge.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	google.charts.load('current', {'packages':['gauge']});
 	google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(GetCSV);
-
 
 </script>
 
 </header>
 
 
+
 <body>
 
 
     <h1>Live Grid Infomation</h1>
-    <canvas id=SomeData1></canvas>
-	<canvas id=SomeData2></canvas>
-	<canvas id=SomeData3></canvas>
-	<canvas id=SomeData4></canvas>
-	<canvas id=SomeData5></canvas>
-	<canvas id=SomeData6></canvas>
+    <div id=Gauge1 style="float:left; margin-bottom: 10px;">
+		<canvas id=SomeData1></canvas>
+		<div id=gValue1 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge2 style="float:left; display:none;" >
+		<canvas id=SomeData2></canvas>
+		<div id=gValue2 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge3 style="float:left; display:none;">
+		<canvas id=SomeData3></canvas>
+		<div id=gValue3 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge4 style="float:left; margin-bottom: 10px;">
+		<canvas id=SomeData4></canvas>
+		<div id=gValue4 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge5 style="float:left; margin-bottom: 10px;">
+		<canvas id=SomeData5></canvas>
+		<div id=gValue5 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge6 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData6></canvas>
+		<div id=gValue6 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge7 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData7></canvas>
+		<div id=gValue7 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge8 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData8></canvas>
+		<div id=gValue8 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge9 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData9></canvas>
+		<div id=gValue9 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge10 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData10></canvas>
+		<div id=gValue10 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge11 style="float:left ; margin-bottom: 10px">
+		<canvas id=SomeData11></canvas>
+		<div id=gValue11 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge12 style="float:left; margin-bottom: 10px">
+		<canvas id=SomeData12></canvas>
+		<div id=gValue12 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge13 style="float:left; margin-bottom: 10px">
+		<canvas id=SomeData13></canvas>
+		<div id=gValue13 style="text-align:center;"></div>
+	</div>
+	<div id=Gauge14 style="float:left; margin-bottom: 10px">
+		<canvas id=SomeData14></canvas>
+		<div id=gValue14 style="text-align:center;"></div>
+	</div>
+	
+	
+	
+</body>
+	
 <footer>
     <Script>
 	
     </Script>
+	
+	
 </footer>	
