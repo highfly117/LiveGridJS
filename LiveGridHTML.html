@@ -14,75 +14,92 @@
 	google.charts.load('current', {'packages':['gauge']});
 	google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(Getfueltype);
+	google.charts.setOnLoadCallback(GetDemand);
+	google.charts.setOnLoadCallback(GetDailyDemand);
 
 </script>
 
 </header>
 
+<style>
 
+canvas{
+	width:220px;
+	margin-top: 10px;
+}
+
+</style>
 
 <body>
 
 
     <h1>Live Grid Infomation</h1>
-    <div id=Gauge1 style="float:left; margin-bottom: 10px;">
+	
+	<div id=DemandDiv style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+		<canvas id=Demand></canvas>
+		<div id=DemandVal style="text-align:center;"></div>
+	</div>
+	
+    <div id=Gauge1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData1></canvas>
 		<div id=gValue1 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge2 style="float:left; display:none;" >
+	<div id=Gauge2 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData2></canvas>
 		<div id=gValue2 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge3 style="float:left; display:none;">
+	<div id=Gauge3 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData3></canvas>
 		<div id=gValue3 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge4 style="float:left; margin-bottom: 10px;">
+	<div id=Gauge4 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData4></canvas>
 		<div id=gValue4 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge5 style="float:left; margin-bottom: 10px;">
+	<div id=Gauge5 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData5></canvas>
 		<div id=gValue5 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge6 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge6 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData6></canvas>
 		<div id=gValue6 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge7 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge7 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData7></canvas>
 		<div id=gValue7 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge8 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge8 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData8></canvas>
 		<div id=gValue8 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge9 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge9 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData9></canvas>
 		<div id=gValue9 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge10 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge10 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData10></canvas>
 		<div id=gValue10 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge11 style="float:left ; margin-bottom: 10px">
+	<div id=Gauge11 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData11></canvas>
 		<div id=gValue11 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge12 style="float:left; margin-bottom: 10px">
+	<div id=Gauge12 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData12></canvas>
 		<div id=gValue12 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge13 style="float:left; margin-bottom: 10px">
+	<div id=Gauge13 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData13></canvas>
 		<div id=gValue13 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge14 style="float:left; margin-bottom: 10px">
+	<div id=Gauge14 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData14></canvas>
 		<div id=gValue14 style="text-align:center;"></div>
 	</div>
 	
-	
+	<div id=Chart1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+		
+	</div>
 	
 </body>
 	
