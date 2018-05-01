@@ -16,7 +16,7 @@
     google.charts.setOnLoadCallback(Getfueltype);
 	google.charts.setOnLoadCallback(GetDemand);
 	google.charts.setOnLoadCallback(GetDailyDemand);
-
+	google.charts.setOnLoadCallback(drawPieChart);
 </script>
 
 </header>
@@ -37,7 +37,7 @@ canvas{
 	<br>
 	
 	
-	<div id=GaugeWrapper style="margin:0 auto; overflow:hidden; border: 1px solid gray;">
+	<div id=GaugeWrapper style="width: 1162px; margin:0 auto; overflow:hidden; border: 1px solid gray;">
 	<div id=DemandDiv style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=Demand></canvas>
 		<div id=DemandVal style="text-align:center;"></div>
@@ -102,10 +102,16 @@ canvas{
 	
 	</div>
 	
-	<div style="margin-left: 5px; margin-right: 5px; float:left;">
-	<h2 style="border: 1px solid gray;margin-left: 5px; margin-bottom:-1px; width:902px">Daily Demand (MW)</h2>
-	<div id=Chart1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
+	<div style="margin-left: 18px; margin-right: 5px; float:left;">
+	<h3 style="border: 1px solid gray; margin-bottom:-1px;margin-top: 2px; width:577px">Daily Demand (MW)</h3>
+	<div id=Chart1 style="border: 1px solid gray; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
 	</div>
+	
+	<div style="margin-left: 18px; margin-right: 5px; float:left;">
+	<h3 style="border: 1px solid gray; margin-bottom:-1px;margin-top: 2px; width:577px">Daily Demand (MW)</h3>
+	<div id=pieChart1 style="border: 1px solid gray; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
+	</div>
+	
 	</div>
 	
 </body>

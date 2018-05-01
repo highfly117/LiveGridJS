@@ -224,8 +224,8 @@ function drawDemand(demand){
         var options = {
           curveType: 'function',
           legend: { position: 'bottom' },
-		  width: 900,
-		  height: 450,
+		  width: 575,
+		  height: 400,
 		  vAxis: {title: 'Wattage (MW)'},
 		  legend: {position: 'right', alignment: 'center'},
 		  chartArea: {width: '65%', height: '60%'},
@@ -237,5 +237,23 @@ function drawDemand(demand){
         chart.draw(data, options);
       }
 
+function drawPieChart() {
 
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart.draw(data, options);
+      }
 	
