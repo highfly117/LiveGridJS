@@ -41,8 +41,9 @@ j=JSON.stringify
 }
 
 function GetDemand(){
-
-	j=JSON.stringify
+	
+	var demand = [];
+	var j=JSON.stringify;
 		
 	$.ajax({
     url: 'https://api.bmreports.com/BMRS/ROLSYSDEM/v1?APIKey=66ky5jo5p5w0vbd&ServiceType=CSV',
@@ -67,9 +68,23 @@ function GetDemand(){
 
 
 function GetDailyDemand(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1
+	var yyyy = today.getFullYear();
 
+	if (dd<10) {
+		dd = '0'+ dd
+	}
+	
+	if (mm<10){
+		mm = '0'+ mm
+	}
+
+	today = yyyy + '-' + mm + '-' + dd;
+	
 	$.ajax({
-    url: 'https://api.bmreports.com/BMRS/ROLSYSDEM/v1?APIKey=66ky5jo5p5w0vbd&FromDateTime=2018-04-27 00:00:00&ToDateTime=2018-04-27 23:59:59&ServiceType=CSV',
+    url: 'https://api.bmreports.com/BMRS/ROLSYSDEM/v1?APIKey=66ky5jo5p5w0vbd&FromDateTime='+today+' 00:00:00&ToDateTime='+today+' 23:59:59&ServiceType=CSV',
     async: false,
     success: function (csvd) {
         data = $.csv.toArrays(csvd);
@@ -77,20 +92,29 @@ function GetDailyDemand(){
     dataType: "text",
     complete: function () {
 	
-	n = 1
-	Linearray = [];
+	var n = 1
+	var Linearray = [];
+	var textoutput = '[';
+	
+	textoutput += '["Time","Demand (MW)"]';
 	while (n < (data.length)-2) {
-		DailyDemand = String((data[n].slice(1,2)));
-		DailyDemand2 = (data[n].slice(2,3));
-		Linearray.push(DailyDemand);
-		Linearray.push(DailyDemand2)	
-			
-						
+		var DailyDemand = (data[n].slice(1,3));
+		
+		var TimeString = String(data[n][1]).substring(8,12);
+		
+		var formatTime = TimeString.replace(/\B(?=(\d{2})+(?!\d))/g, ":");;
+		
+		 textoutput += ',["' + formatTime + '",' + data[n][2] + ']';
+				
 		n++
 		}
+		
+	textoutput += ']';
+	var dataarray = eval(textoutput);
 	
-	alert(Linearray);
-	drawChart();
+	
+
+	drawChart(dataarray);
     }
 });
 }
@@ -194,19 +218,18 @@ function drawDemand(demand){
 	
 }
 
- function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
+ function drawChart(dataarray) {
+        var data = google.visualization.arrayToDataTable(dataarray);
 
         var options = {
-          title: 'Company Performance',
           curveType: 'function',
-          legend: { position: 'bottom' }
+          legend: { position: 'bottom' },
+		  width: 900,
+		  height: 450,
+		  vAxis: {title: 'Wattage (MW)'},
+		  legend: {position: 'right', alignment: 'center'},
+		  chartArea: {width: '65%', height: '60%'},
+		  hAxis: {slantedTextAngle: 90, title: 'Time (24Hr)'}
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('Chart1'));

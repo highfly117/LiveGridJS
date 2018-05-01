@@ -32,9 +32,12 @@ canvas{
 
 <body>
 
-
-    <h1>Live Grid Infomation</h1>
+<div id=border style="border: 1px solid gray; overflow:hidden; width:1200px; margin: 0 auto;"><h1>Live Grid Infomation</h1>
+	<br>
+	<br>
 	
+	
+	<div id=GaugeWrapper style="margin:0 auto; overflow:hidden; border: 1px solid gray;">
 	<div id=DemandDiv style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=Demand></canvas>
 		<div id=DemandVal style="text-align:center;"></div>
@@ -45,7 +48,7 @@ canvas{
 		<div id=gValue1 style="text-align:center;"></div>
 	</div>
 	<div id=Gauge2 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
-		<canvas id=SomeData2></canvas>
+		<canvas id=SomeData2 ></canvas>
 		<div id=gValue2 style="text-align:center;"></div>
 	</div>
 	<div id=Gauge3 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
@@ -97,8 +100,12 @@ canvas{
 		<div id=gValue14 style="text-align:center;"></div>
 	</div>
 	
-	<div id=Chart1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
-		
+	</div>
+	
+	<div style="margin-left: 5px; margin-right: 5px; float:left;">
+	<h2 style="border: 1px solid gray;margin-left: 5px; margin-bottom:-1px; width:902px">Daily Demand (MW)</h2>
+	<div id=Chart1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
+	</div>
 	</div>
 	
 </body>
@@ -109,4 +116,3 @@ canvas{
     </Script>
 	
 	
-</footer>	
