@@ -1,3 +1,6 @@
+
+
+
 n = 1;
 arr = [];
 arr2 = [];
@@ -23,11 +26,9 @@ j=JSON.stringify
     dataType: "text",
     complete: function () {
 		
-        //alert(data[1][2]);		
 		while (n < (data.length)-2) {
 			fueltype = j( data[n].slice(1,2));
 			GigaWatt = j(parseFloat(data[n].slice(2,3)));
-			//arr.push(fueltype);
 			arr.push(fueltype);
 			arr2.push(GigaWatt);
 			
@@ -119,7 +120,41 @@ function GetDailyDemand(){
 });
 }
 
+function GetDemandPie(){
 
+j=JSON.stringify
+		
+
+	$.ajax({
+    url: 'https://api.bmreports.com/BMRS/FUELINSTHHCUR/v1?APIKey=66ky5jo5p5w0vbd&ServiceType=CSV',
+    async: false,
+    success: function (csvd) {
+        data = $.csv.toArrays(csvd);
+    },
+    dataType: "text",
+    complete: function () {
+		
+		var textoutput2 = '[';
+	
+		textoutput2 += '["Fuel Type","MW"]';
+		var n = 1
+		
+		while (n < (data.length)-2) {
+			
+			 textoutput2 += ',["' + data[n][1] + '",' + data[n][2] + ']';
+			
+			n++
+		}
+	textoutput2 += ']'
+	
+	
+	
+	dataarray2 = eval(textoutput2);
+		drawPieChart(dataarray2);
+
+    }
+});
+}
 
 function drawChart2(data){
 	var opts = {
@@ -192,7 +227,7 @@ function drawDemand(demand){
   percentColors: [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]],
   staticLabels: {
 	font: "10px sans-serif",  // Specifies font
-	labels: [70*0.10, 70*0.20, 70*0.30,70*0.40,70*0.50,70*0.60, 70*0.70,70*0.80, 70*0.90, 70*1.00],  // Print labels at these values
+	labels: [50*0.10, 50*0.20, 50*0.30,50*0.40,50*0.50,50*0.60, 50*0.70,50*0.80, 50*0.90, 50*1.00],  // Print labels at these values
 	color: "#000000",  // Optional: Label text color
 	fractionDigits: 0  // Optional: Numerical precision. 0=round off.
    },
@@ -210,7 +245,7 @@ function drawDemand(demand){
 
 	var target = document.getElementById('Demand'); // your canvas element
 	var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-	gauge.maxValue = 70; // set max gauge value
+	gauge.maxValue = 50; // set max gauge value
 	gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	gauge.set(demand / 1000); // set actual value
@@ -224,7 +259,7 @@ function drawDemand(demand){
         var options = {
           curveType: 'function',
           legend: { position: 'bottom' },
-		  width: 575,
+		  width: 545,
 		  height: 400,
 		  vAxis: {title: 'Wattage (MW)'},
 		  legend: {position: 'right', alignment: 'center'},
@@ -237,22 +272,16 @@ function drawDemand(demand){
         chart.draw(data, options);
       }
 
-function drawPieChart() {
+function drawPieChart(dataarray2) {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+        var data = google.visualization.arrayToDataTable(dataarray2);
 
         var options = {
-          title: 'My Daily Activities'
+		  width: 545,
+		  height: 400
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+        var chart = new google.visualization.PieChart(document.getElementById('pieChart1'));
 
         chart.draw(data, options);
       }
