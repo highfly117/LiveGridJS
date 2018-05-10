@@ -259,7 +259,7 @@ function drawDemand(demand){
         var options = {
           curveType: 'function',
           legend: { position: 'bottom' },
-		  width: 545,
+		  width: 570,
 		  height: 400,
 		  vAxis: {title: 'Wattage (MW)'},
 		  legend: {position: 'right', alignment: 'center'},
@@ -277,7 +277,7 @@ function drawPieChart(dataarray2) {
         var data = google.visualization.arrayToDataTable(dataarray2);
 
         var options = {
-		  width: 545,
+		  width: 570,
 		  height: 400
         };
 
