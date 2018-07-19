@@ -7,9 +7,9 @@
 <script type ="text/javascript" src="jquery-csv.js"></script>
 <script type ="text/javascript" src="gauge.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.bundle.min.js" integrity="sha384-CS0nxkpPy+xUkNGhObAISrkg/xjb3USVCwy+0/NMzd5VxgY4CMCyTkItmy5n0voC" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	google.charts.load('current', {'packages':['gauge']});
 	google.charts.load('current', {packages: ['corechart']});
@@ -23,79 +23,99 @@
 
 <style>
 
-canvas{
+body
+{
+background-color:	rgb(242, 242, 242);
+
+}
+
+canvas
+{
 	width:220px;
 	margin-top: 10px;
+}
+
+.shadowboxyes
+{
+box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19);
+}
+
+.Menu3d
+{
+background: rgb(26, 163, 255);
 }
 
 </style>
 
 <body>
 
-<div id=border style="border: 1px solid gray; overflow:hidden; width:1200px; margin: 0 auto;"><h1>Live Grid Infomation</h1>
+<div class=shadowboxyes id=border style="background-color:white; overflow:hidden; width:1200px; height:1900px; margin: 0 auto;">
+	<div style="box-shadow:0px 4px 8px 0px rgba(0,0,0,0.2), 0px 6px 20px 0px rgba(0,0,0,0.19); background:grey;">
+	<h1 style="padding: 5px 5px 5px 5px;">National Grid Data</h1>
+	</div>
 	<br>
 	<br>
 	
 	
-	<div id=GaugeWrapper style="width: 1162px; margin:0 auto; overflow:hidden; border: 1px solid gray;padding-top: 10px;">
-	<div id=DemandDiv style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div id=GaugeWrapper style="width: 1162px; margin:0 auto; overflow:hidden; padding-top: 10px;">
+	<div class=shadowboxyes id=DemandDiv style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=Demand></canvas>
-		<div id=DemandVal style="text-align:center;"></div>
+		<div class=Menu3d id=DemandVal style="text-align:center;"></div>
 	</div>
 	
-    <div id=Gauge1 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+    <div class=shadowboxyes id=Gauge1 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData1></canvas>
-		<div id=gValue1 style="text-align:center;"></div>
+		<div class=Menu3d id=gValue1 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge2 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge2 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData2 ></canvas>
 		<div id=gValue2 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge3 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge3 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData3></canvas>
 		<div id=gValue3 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge4 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge4 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData4></canvas>
 		<div id=gValue4 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge5 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge5 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData5></canvas>
 		<div id=gValue5 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge6 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge6 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData6></canvas>
 		<div id=gValue6 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge7 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge7 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData7></canvas>
 		<div id=gValue7 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge8 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge8 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData8></canvas>
 		<div id=gValue8 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge9 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge9 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData9></canvas>
 		<div id=gValue9 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge10 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge10 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData10></canvas>
 		<div id=gValue10 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge11 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge11 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData11></canvas>
 		<div id=gValue11 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge12 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge12 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData12></canvas>
 		<div id=gValue12 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge13 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge13 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData13></canvas>
 		<div id=gValue13 style="text-align:center;"></div>
 	</div>
-	<div id=Gauge14 style="border: 1px solid gray; margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
+	<div class=shadowboxyes id=Gauge14 style=" margin-left: 5px; margin-right: 5px; float:left; margin-bottom: 10px;">
 		<canvas id=SomeData14></canvas>
 		<div id=gValue14 style="text-align:center;"></div>
 	</div>
@@ -103,14 +123,18 @@ canvas{
 	</div>
 	
 	<div style="margin:0 audio">
-	<div style="margin-left: 18px; margin-right: 5px; float:left;">
-	<h3 style="border: 1px solid gray; margin-bottom:-1px;margin-top: 2px; width:572px">Daily Demand (MW)</h3>
-	<div id=Chart1 style="border: 1px solid gray; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
+	<div class=shadowboxyes style="margin-left: 18px; margin-right: 5px; float:left;">
+	<div style="background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);border-bottom: 2px solid;">
+	<h3 style="padding:5px 5px 5px 5px;width:572px">Daily Demand (MW)</h3>
+	</div>
+	<div  id=Chart1 style="margin-right: 5px; float:left; margin-bottom: 10px;"></div>
 	</div>
 	
-	<div style="margin-left: 5px; margin-right: 13px; float:right;">
-	<h3 style="border: 1px solid gray; margin-bottom:-1px;margin-top: 2px; width:572px">Current Demand (MW)</h3>
-	<div id=pieChart1 style="border: 1px solid gray; margin-right: 5px; float:left; margin-bottom: 10px;"></div>
+	<div class=shadowboxyes style="margin-left: 5px; margin-right: 13px; float:right;">
+	<div style="background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); border-bottom: 2px solid;">
+	<h3 style="padding:5px 5px 5px 5px;width:572px width:572px">Current Demand (MW)</h3>
+	</div>
+	<div id=pieChart1 style="margin-right: 5px; float:left; margin-bottom: 10px;"></div>
 	</div>
 	</div>
 	

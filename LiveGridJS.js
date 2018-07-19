@@ -26,18 +26,19 @@ j=JSON.stringify
     dataType: "text",
     complete: function () {
 		
-		while (n < (data.length)-2) {
-			fueltype = j( data[n].slice(1,2));
-			GigaWatt = j(parseFloat(data[n].slice(2,3)));
-			arr.push(fueltype);
-			arr2.push(GigaWatt);
-			
-			n++
-		}
 		
-		drawChart2(data);
+	
+	
 
+	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+	
+	console.log(data.sort(collator.compare));
+	
+	drawChart2(data);
+	
+	//alert(sorted);
     }
+	
 });
 }
 
@@ -201,9 +202,17 @@ while (i < 15){
 	gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	gauge.set(parseFloat(data[i][2])/1000); // set actual value
-	$('#gValue'+ i).html(data[i][1] +"   "+ parseFloat(data[i][2])/1000 + " GW")
-i++
+	$('#gValue'+ i).html("<h4 style='padding-bottom:5px; margin-bottom:0px;'>" +data[i][1] +"   "+ parseFloat(data[i][2])/1000 + " GW"+"</h4>")
+
+	
+	i++
+
+
 };
+
+
+
+alert
 
 }
 
@@ -249,7 +258,7 @@ function drawDemand(demand){
 	gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	gauge.set(demand / 1000); // set actual value
-	$('#DemandVal').html(demand / 1000 + " GW")
+	$('#DemandVal').html("<h4 style='padding-bottom:5px; margin-bottom:0px;'>"+demand / 1000 + " GW"+"</h4>")
 	
 }
 
