@@ -29,12 +29,25 @@ j=JSON.stringify
 		
 	
 	
-
-	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+	function deleteRow(arr, row, row2, row3 ) {
+	var sorted = (arr.sort());
+	sorted = sorted.slice(0); 
+	sorted.splice(row , 1);
 	
-	console.log(data.sort(collator.compare));
+	sorted = sorted.slice(0); 
+	sorted.splice(row2-1 , 1);
 	
-	drawChart2(data);
+	sorted = sorted.slice(0); 
+	sorted.splice(row3-2 , 1);
+	
+	sorted.sort((a, b) => (2 in b ? b[2] : Infinity) - (2 in a ? a[2] : Infinity));
+	
+	return sorted;
+}
+	
+	
+	console.log(deleteRow(data, 0, 15, 16));
+	drawChart2(deleteRow(data, 0, 15, 16));
 	
 	//alert(sorted);
     }
@@ -135,23 +148,31 @@ j=JSON.stringify
     dataType: "text",
     complete: function () {
 		
+		var textoutput1 = '[';
 		var textoutput2 = '[';
 	
-		textoutput2 += '["Fuel Type","MW"]';
+		//textoutput2 += '["Fuel Type","MW"]';
 		var n = 1
 		
 		while (n < (data.length)-2) {
+				
+			textoutput1 +=  data[n][2];
+			textoutput2 += '"' + data[n][1] + '"';
 			
-			 textoutput2 += ',["' + data[n][1] + '",' + data[n][2] + ']';
-			
+			if(n < (data.length)-2){
+				textoutput1 += ',';
+				textoutput2 += ',';
+			}
 			n++
 		}
+	textoutput1 += ']'
 	textoutput2 += ']'
 	
+	console.log(textoutput2)
 	
-	
+	dataarray1 = eval(textoutput1);
 	dataarray2 = eval(textoutput2);
-		drawPieChart(dataarray2);
+		drawPieChart(dataarray1, dataarray2);
 
     }
 });
@@ -193,20 +214,21 @@ function drawChart2(data){
         }
 };
 
-i = 1;
+i = 0;
+j = 1;
 
-while (i < 15){
-	var target = document.getElementById('SomeData' + i); // your canvas element
+while (i < 14){
+	var target = document.getElementById('SomeData' + j); // your canvas element
 	var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	gauge.maxValue = 35; // set max gauge value
 	gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	gauge.set(parseFloat(data[i][2])/1000); // set actual value
-	$('#gValue'+ i).html("<h4 style='padding-bottom:5px; margin-bottom:0px;'>" +data[i][1] +"   "+ parseFloat(data[i][2])/1000 + " GW"+"</h4>")
+	$('#gValue'+ j).html("<h4 style='padding-bottom:5px; margin-bottom:0px;'>" +data[i][1] +"   "+ parseFloat(data[i][2])/1000 + " GW"+"</h4>")
 
 	
 	i++
-
+	j++
 
 };
 
@@ -281,17 +303,72 @@ function drawDemand(demand){
         chart.draw(data, options);
       }
 
-function drawPieChart(dataarray2) {
+function drawPieChart(dataarray1, dataarray2) {
 
-        var data = google.visualization.arrayToDataTable(dataarray2);
+  /*       var data = google.visualization.arrayToDataTable(dataarray2);
 
         var options = {
 		  width: 570,
-		  height: 400
+		  height: 400,
+		  is3D: true,
+		  slices: { 1: {offset:0.5},
+					2: {offset:0.5},
+					3: {offset:0.5},
+					4: {offset:0.5},
+					5: {offset:0.5},
+					6: {offset:0.5},
+					7: {offset:0.5},
+					8: {offset:0.5},
+					9: {offset:0.5}
+		  },
+		  legend: {position: 'labeled'},
+		chartArea:{width: '75%', height: '75%'}
+		 
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pieChart1'));
 
-        chart.draw(data, options);
-      }
+        chart.draw(data, options); */
+		
+	var ctx = document.getElementById('pieChart1');	
+	var myDoughnutChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+		labels: dataarray2,
+        datasets: [{
+			data: dataarray1,
+			backgroundColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+			borderWidth: 1
+			}]
+		},
+		options:
+		{
+			animation:
+			{
+				duration: 7000,
+				animateRotate: true
+				
+			}
+		}
+		
+	
+});
+
+}
+      
 	
